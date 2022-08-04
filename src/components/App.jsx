@@ -5,68 +5,68 @@ import { Section } from './Section/Section';
 
 import { ContactsList } from './ContactsList/ContactsList';
 export class App extends Component {
-  state = {
-    contacts: [],
-    filter: '',
-  };
+  // state = {
+  //   contacts: [],
+  //   filter: '',
+  // };
 
-  componentDidMount(){
-    const contacts = (localStorage.getItem('contacts'))
-     if(contacts){
-       this.setState({contacts: JSON.parse(contacts)})
-     }
-   }
-   componentDidUpdate(prevProp, prevState){
-     if (prevState.contacts!==this.state.contacts) {
-       localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
-     }
+  // componentDidMount(){
+  //   const contacts = (localStorage.getItem('contacts'))
+  //    if(contacts){
+  //      this.setState({contacts: JSON.parse(contacts)})
+  //    }
+  //  }
+  //  componentDidUpdate(prevProp, prevState){
+  //    if (prevState.contacts!==this.state.contacts) {
+  //      localStorage.setItem('contacts', JSON.stringify(this.state.contacts))
+  //    }
      
-   }
+  //  }
  
 
-  addContactsData = contact => {
-    const{contacts}=this.state
-    if(contacts.some(el=>el.name.toLowerCase()===contact.name.toLowerCase())){
-      alert(`${contact.name} is already in contacts`)
-      return
-    }
-    this.setState(prevState => ({
-      contacts: [...prevState.contacts, contact],
-    }));
-  };
+  // addContactsData = contact => {
+  //   const{contacts}=this.state
+  //   if(contacts.some(el=>el.name.toLowerCase()===contact.name.toLowerCase())){
+  //     alert(`${contact.name} is already in contacts`)
+  //     return
+  //   }
+  //   this.setState(prevState => ({
+  //     contacts: [...prevState.contacts, contact],
+  //   }));
+  // };
 
-  onChangeFilter = ({ target: { value } }) => {
+  // onChangeFilter = ({ target: { value } }) => {
     
-    this.setState({
-      filter: value,
-    });
-  };
+  //   this.setState({
+  //     filter: value,
+  //   });
+  // };
 
-  onDelete=(id)=>{
-    this.setState(prev=>({
-      contacts: prev.contacts.filter(el=>el.id!==id)
-    }))
+  // onDelete=(id)=>{
+  //   this.setState(prev=>({
+  //     contacts: prev.contacts.filter(el=>el.id!==id)
+  //   }))
     
-  }
+  // }
 
 
 
-  filterContacts=()=>{
+  // filterContacts=()=>{
     
-   const{filter, contacts}= this.state
-   return contacts.filter((el)=>el.name.toLowerCase().includes(filter.toLowerCase()))
-  }
+  //  const{filter, contacts}= this.state
+  //  return contacts.filter((el)=>el.name.toLowerCase().includes(filter.toLowerCase()))
+  // }
 
   render() {
     
     return (
       <>
         <Section title={'PhoneBook'}>
-          <Form addContactsData={this.addContactsData} />
+          <Form  />
         </Section>
         <Section title={'Contacts'}>
-          <Filter  onChange={this.onChangeFilter} />
-          <ContactsList contacts={this.filterContacts()} onDelete={this.onDelete} />
+          <Filter  />
+          <ContactsList />
         </Section>
       </>
     );
